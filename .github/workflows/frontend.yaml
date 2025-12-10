@@ -3,7 +3,7 @@ name: Deploy React Frontend to S3 + CloudFront
 on:
   push:
     branches:
-      - develop   # change to your frontend branch (e.g., 'develop2' if needed)
+      - develop
 
 jobs:
   deploy:
@@ -16,26 +16,27 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'     # <-- MATCH YOUR LOCAL VERSION
+          cache: 'npm'           # <-- enables npm cache
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm ci              # <-- DO NOT USE npm install
 
       - name: Create .env file from GitHub Secrets
         run: |
           echo "REACT_APP_SECRET_KEY=${{ secrets.REACT_APP_DEV }}" >> .env
-          
 
       - name: Build React app
         run: npm run build
         env:
           CI: false
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1   # change to your bucket’s region
+          aws-region: us-east-1
 
       - name: Sync build to S3
         run: |
