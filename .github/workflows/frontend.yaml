@@ -19,7 +19,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm ci
         working-directory: frontend/frontend   # adjust if your React app is in a subfolder
 
       - name: Create .env file from GitHub Secrets
