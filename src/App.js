@@ -12,9 +12,11 @@ export default function App() {
   const handleUpload = async () => {
   if (!form.image) return alert("Select image");
 
+    
   // pass the file type to backend
   const { data } = await getS3Url(form.image.type);
 
+    
   // upload with the correct content-type
   await fetch(data.uploadURL, {
     method: "PUT",
@@ -22,10 +24,12 @@ export default function App() {
     body: form.image,
   });
 
+    
   return data.imageUrl;
 };
 
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const imageUrl = await handleUpload();
