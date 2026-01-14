@@ -15,7 +15,7 @@ export default function App() {
     
   // pass the file type to backend
   const { data } = await getS3Url(form.image.type);
-  console.log(data)
+ 
     
   // upload with the correct content-type
   await fetch(data.uploadURL, {
@@ -24,7 +24,6 @@ export default function App() {
     body: form.image,
   });
 
-     console.log(data.imageUrl)
   return data.imageUrl;
 };
 
