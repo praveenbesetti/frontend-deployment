@@ -24,7 +24,7 @@ export default function App() {
     body: form.image,
   });
 
-    
+     console.log(data.imageUrl)
   return data.imageUrl;
 };
 
