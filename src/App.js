@@ -11,7 +11,7 @@ export default function App() {
 
   const handleUpload = async () => {
   if (!form.image) return alert("Select image");
-
+  -er-go,regopgrmogmrerpog
     
   // pass the file type to backend
   const { data } = await getS3Url(form.image.type);
