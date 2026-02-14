@@ -1,0 +1,15 @@
+Workload Identity Pool Admin (roles/iam.workloadIdentityPoolAdmin) to set up the secure OIDC link between GitHub and GCP.
+
+Service Account Admin (roles/iam.serviceAccountAdmin) to create and manage the dedicated deployment identities.
+
+Security Admin (roles/iam.securityAdmin) to manage the IAM policy bindings required for GitHub authentication.
+
+IAP Tunnel Resource Accessor (roles/iap.tunnelResourceAccessor) to allow GitHub to securely SSH into private VMs.
+
+Compute Network Admin (roles/compute.networkAdmin) to configure the Global Load Balancer, Firewalls, and Instance Groups.
+
+Artifact Registry Admin (roles/artifactregistry.admin) to manage Docker image repositories for the backend.
+
+Storage Admin (roles/storage.admin) to create and configure the buckets for frontend static hosting.
+
+Storage Object Admin (roles/storage.objectAdmin) to allow the CI/CD pipeline to upload and sync frontend build files.
